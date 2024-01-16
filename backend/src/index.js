@@ -1,30 +1,20 @@
-const {WebSocketServer} = require("ws");
+'use strict';
 
-// Websocket server
-const wss = new WebSocketServer({ port: 5000 });
+module.exports = {
+  /**
+   * An asynchronous register function that runs before
+   * your application is initialized.
+   *
+   * This gives you an opportunity to extend code.
+   */
+  register(/*{ strapi }*/) {},
 
-function heartbeat() {
-    this.isAlive = true;
-}
-wss.on('connection', function connection(ws) {
-    ws.isAlive = true;
-    ws.on('message', function message(data) {
-        console.log('received: %s', data);
-    });
-    ws.on('error', console.error);
-    ws.on('pong', heartbeat);
-    ws.send("Successfully connected");
-});
-
-const interval = setInterval(function ping() {
-    wss.clients.forEach(function each(ws) {
-        if (ws.isAlive === false) return ws.terminate();
-
-        ws.isAlive = false;
-        ws.ping();
-    });
-}, 30000);
-
-wss.on('close', function close() {
-    clearInterval(interval);
-});
+  /**
+   * An asynchronous bootstrap function that runs before
+   * your application gets started.
+   *
+   * This gives you an opportunity to set up your data model,
+   * run jobs, or perform some special logic.
+   */
+  bootstrap(/*{ strapi }*/) {},
+};

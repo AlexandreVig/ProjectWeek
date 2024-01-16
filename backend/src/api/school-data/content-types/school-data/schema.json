@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "school_datas",
+  "info": {
+    "singularName": "school-data",
+    "pluralName": "school-datas",
+    "displayName": "school_data",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "school_name": {
+      "type": "string",
+      "required": true
+    },
+    "student_nb": {
+      "type": "integer",
+      "required": true
+    },
+    "count": {
+      "type": "integer",
+      "required": true
+    },
+    "shool_logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
